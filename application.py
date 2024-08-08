@@ -7,12 +7,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return render_template('hello.html')
+    return render_template('home.html')
 
-#@app.route("/<name>")
-#def hello(name):
-#    #return f"Hello, {escape(name)}!"
-#    return render_template('hello.html', person=name)
+@app.route("/articles/")
+def articles():
+    return render_template('articles.html')
+
+@app.route("/visualisations/")
+def visualisations():
+    return render_template('visualisations.html')
 
 with app.test_request_context():
     print(url_for('hello_world'))
