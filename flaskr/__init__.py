@@ -1,10 +1,9 @@
-import os
+
 
 from flask import Flask
-from flask import render_template
 
 
-def create_app(test_config=None):
+def create_app():
     # create and configure the app
     app = Flask(__name__)
 
