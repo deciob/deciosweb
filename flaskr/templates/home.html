@@ -1,3 +1,9 @@
-{% extends "layout.html" %} {% block content %}
-<h1>This is the home page!</h1>
+{% extends "layout.j2" %}
+{% block header_home %}
+  <div class="header__item header__item--active">
+    <h2><a href="/">Home</a></h2>
+  </div>
+{% endblock %}
+{% block content %}
+  <h1>This is the home page!</h1>
 {% endblock %}

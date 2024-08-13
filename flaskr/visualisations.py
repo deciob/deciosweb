@@ -6,5 +6,5 @@ bp = Blueprint("visualisations", __name__)
 
 @bp.route("/visualisations/")
 def homepage():
-    return render_template('visualisations.html')
+    return render_template('visualisations.j2')
 

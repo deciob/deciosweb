@@ -20,16 +20,20 @@
 
   <body>
     <header>
-      {% block header %}
-      <div class="header-item">
-        <h2>Home</h2>
-      </div>
-      <div class="header-item">
-        <h2>Articles</h2>
-      </div>
-      <div class="header-item">
-        <h2>Visualisations</h2>
-      </div>
+      {% block header_home %}
+        <div class="header__item">
+          <h2><a href="/">Home</a></h2>
+        </div>
+      {% endblock %}
+      {% block header_articles %}
+        <div class="header__item">
+          <h2><a href="/articles/">Articles</a></h2>
+        </div>
+      {% endblock %}
+      {% block header_visualisations %}
+        <div class="header__item">
+          <h2><a href="/visualisations/">Visualisations</a></h2>
+        </div>
       {% endblock %}
     </header>
     <article>{% block content %}{% endblock %}</article>

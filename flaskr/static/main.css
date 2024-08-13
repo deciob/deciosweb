@@ -10,7 +10,11 @@ header {
   gap: 5px;
 }
 
-.header-item {
+.header__item {
   padding: 5px;
   border: 1px solid #999;
+}
+
+.header__item--active {
+  border-color: lab(87.6 125 104);
 }
