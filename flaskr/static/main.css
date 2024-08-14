@@ -5,6 +5,25 @@ body {
   margin: 1rem;
 }
 
+/* || Typography */
+
+/* https://rsms.me/inter/ */
+
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1; /* fix for Chrome */
+}
+
+@supports (font-variation-settings: light) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+/* || Header and Main Naviagtion */
+
 header {
   display: flex;
   gap: 5px;
