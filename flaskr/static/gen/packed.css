@@ -1,0 +1,255 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* || Variables */
+
+:root {
+  /* color */
+  --color-background: #fbfbfb;
+  --color-hue-main: 210deg;
+  --color-selected: lch(35 110 var(--color-hue-main));
+  --color-link: lch(30 130 var(--color-hue-main));
+  --color-link-visited: lch(20 120 var(--color-hue-main));
+  --color-header: #000;
+  --color-sub-header: #222;
+  --color-text: #333;
+
+  /* */
+  --size-normal: 1.25rem;
+  --size-big: 3.75rem;
+
+  /* */
+  --spacing-one: 0.4rem;
+  --spacing-two: 0.8rem;
+  --spacing-three: 1.2rem;
+  --spacing-letter-base: 0.0625rem;
+  --spacing-one-letter: var(--spacing-letter-base);
+  --spacing-two-letter: 0;
+  --spacing-three-letter: -var(--spacing-letter-base);
+
+  /* */
+  --weight-heavy: 600;
+}
+
+/* || Typography */
+
+/* https://rsms.me/inter/ */
+
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1; /* fix for Chrome */
+}
+
+@supports (font-variation-settings: light) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+/* || Fonts and spacing */
+
+h1 {
+  font-size: var(--size-big);
+  line-height: calc(var(--size-big) * 1.1);
+  margin-block-end: var(--spacing-three);
+  letter-spacing: var(--spacing-three-letter);
+}
+
+h2 {
+  font-size: var(--size-normal);
+  font-weight: var(--weight-heavy);
+  line-height: calc(var(--size-normal) * 1.2);
+  color: var(--color-sub-header);
+  margin-block-end: var(--spacing-two);
+  letter-spacing: var(--spacing-one-letter);
+}
+
+p {
+  font-size: var(--size-normal);
+  line-height: calc(var(--size-normal) * 1.25);
+  color: var(--color-text);
+  margin-block-end: var(--spacing-one);
+  letter-spacing: var(--spacing-one-letter);
+  max-width: 60ch;
+  text-wrap: balance;
+}
+
+a {
+  font-size: var(--size-normal);
+  font-weight: var(--weight-heavy);
+  color: var(--color-link);
+  letter-spacing: var(--spacing-one-letter);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+/* || General */
+
+/* using flex to define some spacing... 
+ * just testing...
+*/
+body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-three);
+  margin: var(--spacing-three);
+  background: var(--color-background);
+}
+
+/* || Header and Main Naviagtion */
+
+header {
+  display: inline-grid;
+  grid-template-columns: min-content min-content min-content;
+  grid-gap: 5px;
+}
+
+.header__item {
+  padding: 5px;
+  border: 1px solid #999;
+  width: 120px;
+  min-width: fit-content;
+  text-align: center;
+}
+
+.header__item--active {
+  border-color: var(--color-selected);
+  border-width: 2px;
+}

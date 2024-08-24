@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
 {% block header_home %}
-  <div class="header__item header__item--active">
-    <h2><a href="/">Home</a></h2>
-  </div>
+  <a class="header__item header__item--active" href="/">Home</a>
 {% endblock %}
 {% block content %}
   <h1>This is the home page!</h1>
+  <h2>Smaller header</h2>
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but also
+    the leap into electronic typesetting, remaining essentially unchanged. It
+    was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software
+    like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
 {% endblock %}

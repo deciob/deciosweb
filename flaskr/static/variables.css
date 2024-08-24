@@ -1,0 +1,29 @@
+/* || Variables */
+
+:root {
+  /* color */
+  --color-background: #fbfbfb;
+  --color-hue-main: 210deg;
+  --color-selected: lch(35 110 var(--color-hue-main));
+  --color-link: lch(30 130 var(--color-hue-main));
+  --color-link-visited: lch(20 120 var(--color-hue-main));
+  --color-header: #000;
+  --color-sub-header: #222;
+  --color-text: #333;
+
+  /* */
+  --size-normal: 1.25rem;
+  --size-big: 3.75rem;
+
+  /* */
+  --spacing-one: 0.4rem;
+  --spacing-two: 0.8rem;
+  --spacing-three: 1.2rem;
+  --spacing-letter-base: 0.0625rem;
+  --spacing-one-letter: var(--spacing-letter-base);
+  --spacing-two-letter: 0;
+  --spacing-three-letter: -var(--spacing-letter-base);
+
+  /* */
+  --weight-heavy: 600;
+}

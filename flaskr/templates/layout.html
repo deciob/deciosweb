@@ -8,39 +8,26 @@
     <title>Decio's web</title>
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='css-reset.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='main.css') }}"
-    />
+    {% assets "css_all" %}
+      <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
   </head>
 
   <body>
     <header>
       {% block header_home %}
-        <div class="header__item">
-          <h2><a href="/">Home</a></h2>
-        </div>
+        <a class="header__item" href="/">Home</a>
       {% endblock %}
       {% block header_articles %}
-        <div class="header__item">
-          <h2><a href="/articles/">Articles</a></h2>
-        </div>
+        <a class="header__item" href="/articles/">Articles</a>
       {% endblock %}
       {% block header_visualisations %}
-        <div class="header__item">
-          <h2><a href="/visualisations/">Visualisations</a></h2>
-        </div>
+        <a class="header__item" href="/visualisations/">Visualisations</a>
       {% endblock %}
     </header>
     <article>{% block content %}{% endblock %}</article>
     <footer>
-      <h1>This is the footer</h1>
+      <h2>This is the footer</h2>
     </footer>
   </body>
 </html>
