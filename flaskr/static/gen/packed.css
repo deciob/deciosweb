@@ -138,23 +138,48 @@ table {
 
 :root {
   /* color */
-  --color-background: #fbfbfb;
-  --color-hue-main: 210deg;
-  --color-selected: lch(35 110 var(--color-hue-main));
+  --color-background: #edece4;
+  --color-hue-main: 230deg;
+
   --color-link: lch(30 130 var(--color-hue-main));
   --color-link-visited: lch(20 120 var(--color-hue-main));
+
+  --color-link-header: lch(20 20 var(--color-hue-main));
+  --color-link-header-active: brown;
+
   --color-header: #000;
   --color-sub-header: #222;
   --color-text: #333;
 
-  /* */
-  --size-normal: 1.25rem;
-  --size-big: 3.75rem;
+  /* Fluid scaling, follows: 
+   min + (max - min) * ((100vw - min-width) / (max-width - min-width)) */
+
+  --min-fs: 1;
+  --max-fs: 1.2;
+  --min-vw: 25;
+  --max-vw: 75;
+
+  --min-fs-rem: var(--min-fs) * 1rem;
+  --max-fs-rem: var(--max-fs) * 1rem;
+  --min-vw-rem: var(--min-vw) * 1rem;
+
+  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
+
+  --base-size: clamp(
+    var(--min-fs-rem),
+    var(--min-fs-rem) + var(--slope),
+    var(--max-fs-rem)
+  );
+
+  --font-size-normal: var(--base-size);
+  --font-size-big: calc(var(--base-size) * 3);
 
   /* */
-  --spacing-one: 0.4rem;
-  --spacing-two: 0.8rem;
-  --spacing-three: 1.2rem;
+  --spacing-one: calc(var(--base-size) * 0.5);
+  --spacing-two: calc(var(--base-size) * 1);
+  --spacing-three: calc(var(--base-size) * 1.5);
+
   --spacing-letter-base: 0.0625rem;
   --spacing-one-letter: var(--spacing-letter-base);
   --spacing-two-letter: 0;
@@ -169,56 +194,65 @@ table {
 /* https://rsms.me/inter/ */
 
 :root {
-  font-family: Inter, sans-serif;
-  font-feature-settings:
-    "liga" 1,
-    "calt" 1; /* fix for Chrome */
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 @supports (font-variation-settings: light) {
   :root {
-    font-family: InterVariable, sans-serif;
+    font-family: "Urbanist", sans-serif;
   }
 }
 
 /* || Fonts and spacing */
 
 h1 {
-  font-size: var(--size-big);
-  line-height: calc(var(--size-big) * 1.1);
+  font-size: var(--font-size-big);
+  line-height: calc(var(--font-size-big) * 1.1);
   margin-block-end: var(--spacing-three);
   letter-spacing: var(--spacing-three-letter);
+  font-family: "Jost";
 }
 
 h2 {
-  font-size: var(--size-normal);
+  font-size: var(--font-size-normal);
   font-weight: var(--weight-heavy);
-  line-height: calc(var(--size-normal) * 1.2);
+  line-height: calc(var(--font-size-normal) * 1.25);
   color: var(--color-sub-header);
   margin-block-end: var(--spacing-two);
   letter-spacing: var(--spacing-one-letter);
+  font-family: "Jost";
 }
 
 p {
-  font-size: var(--size-normal);
-  line-height: calc(var(--size-normal) * 1.25);
+  font-size: var(--font-size-normal);
+  line-height: calc(var(--font-size-normal) * 1.3);
   color: var(--color-text);
   margin-block-end: var(--spacing-one);
   letter-spacing: var(--spacing-one-letter);
-  max-width: 60ch;
+  max-width: 70ch;
   text-wrap: balance;
 }
 
+p::first-letter {
+  font-size: calc(var(--font-size-normal) * 1.5);
+  font-weight: var(--weight-heavy);
+  color: brown;
+}
+
 a {
-  font-size: var(--size-normal);
+  font-size: var(--font-size-normal);
   font-weight: var(--weight-heavy);
   color: var(--color-link);
   letter-spacing: var(--spacing-one-letter);
 }
 
+/*
 a:visited {
   color: var(--color-link-visited);
 }
+*/
 
 /* || General */
 
@@ -229,27 +263,35 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-three);
-  margin: var(--spacing-three);
+  margin-inline-start: calc(var(--spacing-three) + calc(var(--slope) * 9));
+  margin-inline-end: calc(var(--spacing-three) * 1);
+  margin-block-start: calc(var(--spacing-three) * 1);
   background: var(--color-background);
 }
 
 /* || Header and Main Naviagtion */
 
+/*
 header {
   display: inline-grid;
   grid-template-columns: min-content min-content min-content;
   grid-gap: 5px;
 }
+*/
 
 .header__item {
-  padding: 5px;
-  border: 1px solid #999;
-  width: 120px;
-  min-width: fit-content;
-  text-align: center;
+  padding: var(--spacing-one);
+  text-underline-offset: 25%;
+  text-decoration-thickness: 10%;
+  color: var(--color-link-header);
+}
+
+.header__item:first-child {
+  padding-inline-start: 0;
 }
 
 .header__item--active {
-  border-color: var(--color-selected);
-  border-width: 2px;
+  text-decoration-color: var(--color-link-header-active);
+  text-decoration-style: double;
+  color: var(--color-link-header-active);
 }

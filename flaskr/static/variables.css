@@ -2,23 +2,48 @@
 
 :root {
   /* color */
-  --color-background: #fbfbfb;
-  --color-hue-main: 210deg;
-  --color-selected: lch(35 110 var(--color-hue-main));
+  --color-background: #edece4;
+  --color-hue-main: 230deg;
+
   --color-link: lch(30 130 var(--color-hue-main));
   --color-link-visited: lch(20 120 var(--color-hue-main));
+
+  --color-link-header: lch(20 20 var(--color-hue-main));
+  --color-link-header-active: brown;
+
   --color-header: #000;
   --color-sub-header: #222;
   --color-text: #333;
 
-  /* */
-  --size-normal: 1.25rem;
-  --size-big: 3.75rem;
+  /* Fluid scaling, follows: 
+   min + (max - min) * ((100vw - min-width) / (max-width - min-width)) */
+
+  --min-fs: 1;
+  --max-fs: 1.2;
+  --min-vw: 25;
+  --max-vw: 75;
+
+  --min-fs-rem: var(--min-fs) * 1rem;
+  --max-fs-rem: var(--max-fs) * 1rem;
+  --min-vw-rem: var(--min-vw) * 1rem;
+
+  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
+
+  --base-size: clamp(
+    var(--min-fs-rem),
+    var(--min-fs-rem) + var(--slope),
+    var(--max-fs-rem)
+  );
+
+  --font-size-normal: var(--base-size);
+  --font-size-big: calc(var(--base-size) * 3);
 
   /* */
-  --spacing-one: 0.4rem;
-  --spacing-two: 0.8rem;
-  --spacing-three: 1.2rem;
+  --spacing-one: calc(var(--base-size) * 0.5);
+  --spacing-two: calc(var(--base-size) * 1);
+  --spacing-three: calc(var(--base-size) * 1.5);
+
   --spacing-letter-base: 0.0625rem;
   --spacing-one-letter: var(--spacing-letter-base);
   --spacing-two-letter: 0;
