@@ -39,6 +39,12 @@
   --font-size-normal: var(--base-size);
   --font-size-big: calc(var(--base-size) * 3);
 
+  /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
+
+  --fluid-s: clamp(1rem, 0.7037rem + 1.4815vw, 2rem);
+  --fluid-m: clamp(1.6125rem, 1.1329rem + 2.3981vw, 3.2313rem);
+  --fluid-l: clamp(2.6063rem, 1.8303rem + 3.8796vw, 5.225rem);
+
   /* */
   --spacing-one: calc(var(--base-size) * 0.5);
   --spacing-two: calc(var(--base-size) * 1);

@@ -175,6 +175,12 @@ table {
   --font-size-normal: var(--base-size);
   --font-size-big: calc(var(--base-size) * 3);
 
+  /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
+
+  --fluid-s: clamp(1rem, 0.7037rem + 1.4815vw, 2rem);
+  --fluid-m: clamp(1.6125rem, 1.1329rem + 2.3981vw, 3.2313rem);
+  --fluid-l: clamp(2.6063rem, 1.8303rem + 3.8796vw, 5.225rem);
+
   /* */
   --spacing-one: calc(var(--base-size) * 0.5);
   --spacing-two: calc(var(--base-size) * 1);
@@ -208,17 +214,17 @@ table {
 /* || Fonts and spacing */
 
 h1 {
-  font-size: var(--font-size-big);
-  line-height: calc(var(--font-size-big) * 1.1);
+  font-size: var(--fluid-l);
+  line-height: calc(var(--fluid-l) * 1.1);
   margin-block-end: var(--spacing-three);
   letter-spacing: var(--spacing-three-letter);
   font-family: "Jost";
 }
 
 h2 {
-  font-size: var(--font-size-normal);
+  font-size: var(--fluid-s);
   font-weight: var(--weight-heavy);
-  line-height: calc(var(--font-size-normal) * 1.25);
+  line-height: calc(var(--fluid-m) * 1.25);
   color: var(--color-sub-header);
   margin-block-end: var(--spacing-two);
   letter-spacing: var(--spacing-one-letter);
@@ -226,8 +232,8 @@ h2 {
 }
 
 p {
-  font-size: var(--font-size-normal);
-  line-height: calc(var(--font-size-normal) * 1.3);
+  font-size: var(--fluid-s);
+  line-height: calc(var(--fluid-s) * 1.3);
   color: var(--color-text);
   margin-block-end: var(--spacing-one);
   letter-spacing: var(--spacing-one-letter);
@@ -236,13 +242,13 @@ p {
 }
 
 p::first-letter {
-  font-size: calc(var(--font-size-normal) * 1.5);
+  font-size: var(--fluid-m);
   font-weight: var(--weight-heavy);
   color: brown;
 }
 
 a {
-  font-size: var(--font-size-normal);
+  font-size: var(--fluid-s);
   font-weight: var(--weight-heavy);
   color: var(--color-link);
   letter-spacing: var(--spacing-one-letter);
@@ -266,6 +272,7 @@ body {
   margin-inline-start: calc(var(--spacing-three) + calc(var(--slope) * 9));
   margin-inline-end: calc(var(--spacing-three) * 1);
   margin-block-start: calc(var(--spacing-three) * 1);
+  /* background: linear-gradient(var(--color-background), #4b6584); */
   background: var(--color-background);
 }
 
