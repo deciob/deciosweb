@@ -18,42 +18,62 @@
   /* Fluid scaling, follows: 
    min + (max - min) * ((100vw - min-width) / (max-width - min-width)) */
 
-  --min-fs: 1;
-  --max-fs: 1.2;
-  --min-vw: 25;
-  --max-vw: 75;
+  /* --min-fs: 1; */
+  /* --max-fs: 1.2; */
+  /* --min-vw: 25; */
+  /* --max-vw: 75; */
+  /**/
+  /* --min-fs-rem: var(--min-fs) * 1rem; */
+  /* --max-fs-rem: var(--max-fs) * 1rem; */
+  /* --min-vw-rem: var(--min-vw) * 1rem; */
+  /**/
+  /* --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) / */
+  /*   (var(--max-vw) - var(--min-vw)); */
+  /**/
+  /* --base-size: clamp( */
+  /*   var(--min-fs-rem), */
+  /*   var(--min-fs-rem) + var(--slope), */
+  /*   var(--max-fs-rem) */
+  /* ); */
 
-  --min-fs-rem: var(--min-fs) * 1rem;
-  --max-fs-rem: var(--max-fs) * 1rem;
-  --min-vw-rem: var(--min-vw) * 1rem;
+  --xx-s: 0.381;
+  --x-s: 0.618;
+  --s: 1;
+  --m: 1.618;
+  --l: 2.617;
+  --x-l: 4.235;
+  --xx-l: 6.853;
 
-  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
-    (var(--max-vw) - var(--min-vw));
+  /*https://fluid.style*/
+  /*x -> x * 1.333*/
+  --space-xx-s: clamp(0.381rem, 0.339rem + 0.21vw, 0.507rem);
+  --space-x-s: clamp(0.618rem, 0.55rem + 0.342vw, 0.823rem);
+  --space-s: clamp(1rem, 0.889rem + 0.555vw, 1.333rem);
+  --space-m: clamp(1.618rem, 1.439rem + 0.897vw, 2.156rem);
+  --space-l: clamp(2.617rem, 2.327rem + 1.452vw, 3.488rem);
+  --space-x-l: clamp(4.235rem, 3.765rem + 2.35vw, 5.645rem);
+  --space-xx-l: clamp(6.853rem, 6.092rem + 3.803vw, 9.135rem);
 
-  --base-size: clamp(
-    var(--min-fs-rem),
-    var(--min-fs-rem) + var(--slope),
-    var(--max-fs-rem)
-  );
+  --font-size-s: var(--space-s);
+  --font-size-m: var(--space-m);
+  --font-size-l: var(--space-l);
 
-  --font-size-normal: var(--base-size);
-  --font-size-big: calc(var(--base-size) * 3);
+  --spacing-letter-s: var(--space-x-s);
+  --spacing-letter-m: 0;
+  --spacing-letter-l: -var(--space-x-s);
 
   /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
 
-  --fluid-s: clamp(1rem, 0.7037rem + 1.4815vw, 2rem);
-  --fluid-m: clamp(1.6125rem, 1.1329rem + 2.3981vw, 3.2313rem);
-  --fluid-l: clamp(2.6063rem, 1.8303rem + 3.8796vw, 5.225rem);
+  /*--fluid-s: clamp(1rem, 0.7037rem + 1.4815vw, 2rem);*/
+  /*--fluid-m: clamp(1.6125rem, 1.1329rem + 2.3981vw, 3.2313rem);*/
+  /*--fluid-l: clamp(2.6063rem, 1.8303rem + 3.8796vw, 5.225rem);*/
 
   /* */
-  --spacing-one: calc(var(--base-size) * 0.5);
-  --spacing-two: calc(var(--base-size) * 1);
-  --spacing-three: calc(var(--base-size) * 1.5);
-
-  --spacing-letter-base: 0.0625rem;
-  --spacing-one-letter: var(--spacing-letter-base);
-  --spacing-two-letter: 0;
-  --spacing-three-letter: -var(--spacing-letter-base);
+  /* --spacing-one: calc(var(--base-size) * 0.5); */
+  /* --spacing-two: calc(var(--base-size) * 1); */
+  /* --spacing-three: calc(var(--base-size) * 1.5); */
+  /**/
+  /* --spacing-letter-base: 0.0625rem; */
 
   /* */
   --weight-heavy: 600;
