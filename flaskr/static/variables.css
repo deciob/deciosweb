@@ -46,6 +46,7 @@
 
   /*https://fluid.style*/
   /*x -> x * 1.333*/
+  --space-xxx-s: clamp(0.034rem, 0.03rem + 0.018vw, 0.045rem);
   --space-xx-s: clamp(0.381rem, 0.339rem + 0.21vw, 0.507rem);
   --space-x-s: clamp(0.618rem, 0.55rem + 0.342vw, 0.823rem);
   --space-s: clamp(1rem, 0.889rem + 0.555vw, 1.333rem);
@@ -58,9 +59,9 @@
   --font-size-m: var(--space-m);
   --font-size-l: var(--space-l);
 
-  --spacing-letter-s: var(--space-x-s);
-  --spacing-letter-m: 0;
-  --spacing-letter-l: -var(--space-x-s);
+  --space-letter-s: 0.03em;
+  --space-letter-m: normal;
+  --space-letter-l: -0.03em;
 
   /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
 

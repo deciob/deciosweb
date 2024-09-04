@@ -92,6 +92,16 @@ video {
   vertical-align: baseline;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -113,7 +123,7 @@ body {
 
 ol,
 ul {
-  list-style: none;
+  list-style: "";
 }
 
 blockquote,
@@ -182,6 +192,7 @@ table {
 
   /*https://fluid.style*/
   /*x -> x * 1.333*/
+  --space-xxx-s: clamp(0.034rem, 0.03rem + 0.018vw, 0.045rem);
   --space-xx-s: clamp(0.381rem, 0.339rem + 0.21vw, 0.507rem);
   --space-x-s: clamp(0.618rem, 0.55rem + 0.342vw, 0.823rem);
   --space-s: clamp(1rem, 0.889rem + 0.555vw, 1.333rem);
@@ -194,9 +205,9 @@ table {
   --font-size-m: var(--space-m);
   --font-size-l: var(--space-l);
 
-  --spacing-letter-s: var(--space-x-s);
-  --spacing-letter-m: 0;
-  --spacing-letter-l: -var(--space-x-s);
+  --space-letter-s: 0.03em;
+  --space-letter-m: normal;
+  --space-letter-l: -0.03em;
 
   /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
 
@@ -235,8 +246,9 @@ table {
 
 body {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: var(--space-l) 1fr var(--space-l);
+  /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
+  grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
+  grid-template-rows: auto 1fr auto;
   row-gap: var(--space-m);
   background: var(--color-background);
   line-height: 1.618;
@@ -244,30 +256,31 @@ body {
 /* || Fonts and spacing */
 
 h1 {
+  font-family: "Jost";
   font-size: var(--font-size-l);
   margin-block-end: var(--space-m);
   letter-spacing: var(--space-letter-l);
-  font-family: "Jost";
-  outline: 2px solid;
+  /*outline: 2px solid;*/
 }
 
 h2 {
-  font-size: var(--font-size-m);
-  margin-block-end: var(--space-x-s);
-  color: var(--color-sub-header);
-  letter-spacing: var(--space-letter-m);
   font-family: "Jost";
-  outline: 2px solid;
+  font-size: var(--font-size-s);
+  font-weight: var(--weight-heavy);
+  margin-block-end: var(--space-x-s);
+  letter-spacing: var(--space-letter-m);
+  color: var(--color-sub-header);
+  /*outline: 2px solid;*/
 }
 
 p {
   font-size: var(--font-size-s);
   margin-block-end: var(--space-x-s);
   letter-spacing: var(--space-letter-s);
-  max-width: 70ch;
+  /* max-width: 70ch; */
   text-wrap: balance;
   color: var(--color-text);
-  outline: 2px solid red;
+  /*outline: 2px solid red;*/
 }
 
 p::first-letter {
@@ -280,27 +293,33 @@ a {
   font-size: var(--font-size-s);
   font-weight: var(--weight-heavy);
   color: var(--color-link);
-  outline: 2px solid red;
+  /*outline: 2px solid red;*/
 }
 
 header,
 footer {
-  grid-column: 2/8;
+  grid-column-start: 2;
 }
 
 header {
-  margin-block-start: var(--space-s);
+  font-family: "Jost";
+  display: flex;
+  gap: var(--space-s);
+  flex-wrap: nowrap;
+  /*margin-block-start: var(--space-s);*/
+  /* outline: 1px solid blueviolet; */
 }
 
 .header__item {
-  padding: var(--space-m);
+  /*padding: var(--space-x-s);*/
   color: var(--color-link-header);
   text-decoration: none;
+  /* outline: 2px dotted red; */
 }
 
-.header__item:first-child {
-  padding-inline-start: 0;
-}
+/*.header__item:first-child {*/
+/*padding-inline-start: 0;*/
+/*}*/
 
 .header__item--active {
   text-decoration: underline;
@@ -311,5 +330,5 @@ header {
 }
 
 article {
-  grid-column: 2/8;
+  grid-column-start: 2;
 }
