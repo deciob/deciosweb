@@ -20,5 +20,6 @@ def create_app():
     app.register_blueprint(visualisations.bp)
 
     #import pdb; pdb.set_trace()
+    #print(app.url_map)
 
     return app

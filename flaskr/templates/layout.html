@@ -28,13 +28,19 @@
   <body>
     <header>
       {% block header_home %}
-        <a class="header__item" href="/">Home</a>
+        <a class="header__item" href="{{ url_for('homepage.homepage') }}">
+          Home</a
+        >
       {% endblock %}
       {% block header_articles %}
-        <a class="header__item" href="/articles/">Articles</a>
+        <a class="header__item" href="{{ url_for('articles.articles') }}"
+          >Articles</a
+        >
       {% endblock %}
       {% block header_visualisations %}
-        <a class="header__item" href="/visualisations/">Visualisations</a>
+        <a class="header__item" href="{{ url_for('visualisations.homepage') }}"
+          >Visualisations</a
+        >
       {% endblock %}
     </header>
     <article>{% block content %}{% endblock %}</article>
