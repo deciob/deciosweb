@@ -2,14 +2,21 @@
 
 :root {
   /* color */
-  --color-background: #edece4;
+  --color-background: #e9e8e6;
   --color-hue-main: 230deg;
 
-  --color-link: lch(30 130 var(--color-hue-main));
+  /* lch(57.97% 99.84 44.93) */
+  --color-popout: lch(56 77 44.93);
+
+  /* lch(66.93% 31.32 213.52) */
+  --color-link: lch(42 33 213.52);
+
+  /* --color-link: lch(30 130 var(--color-hue-main)); */
   --color-link-visited: lch(20 120 var(--color-hue-main));
 
-  --color-link-header: lch(20 20 var(--color-hue-main));
-  --color-link-header-active: brown;
+  /* --color-link-header: lch(20 20 var(--color-hue-main)); */
+  --color-link-header: var(--color-link);
+  --color-link-header-active: var(--color-popout);
 
   --color-header: #000;
   --color-sub-header: #222;

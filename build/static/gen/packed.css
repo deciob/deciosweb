@@ -92,6 +92,16 @@ video {
   vertical-align: baseline;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -113,7 +123,7 @@ body {
 
 ol,
 ul {
-  list-style: none;
+  list-style: "";
 }
 
 blockquote,
@@ -134,105 +144,210 @@ table {
   border-spacing: 0;
 }
 
-/* || Typography */
-
 /* || Variables */
+
+:root {
+  /* color */
+  --color-background: #e9e8e6;
+  --color-hue-main: 230deg;
+
+  /* lch(57.97% 99.84 44.93) */
+  --color-popout: lch(56 77 44.93);
+
+  /* lch(66.93% 31.32 213.52) */
+  --color-link: lch(42 33 213.52);
+
+  /* --color-link: lch(30 130 var(--color-hue-main)); */
+  --color-link-visited: lch(20 120 var(--color-hue-main));
+
+  /* --color-link-header: lch(20 20 var(--color-hue-main)); */
+  --color-link-header: var(--color-link);
+  --color-link-header-active: var(--color-popout);
+
+  --color-header: #000;
+  --color-sub-header: #222;
+  --color-text: #333;
+
+  /* Fluid scaling, follows: 
+   min + (max - min) * ((100vw - min-width) / (max-width - min-width)) */
+
+  /* --min-fs: 1; */
+  /* --max-fs: 1.2; */
+  /* --min-vw: 25; */
+  /* --max-vw: 75; */
+  /**/
+  /* --min-fs-rem: var(--min-fs) * 1rem; */
+  /* --max-fs-rem: var(--max-fs) * 1rem; */
+  /* --min-vw-rem: var(--min-vw) * 1rem; */
+  /**/
+  /* --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) / */
+  /*   (var(--max-vw) - var(--min-vw)); */
+  /**/
+  /* --base-size: clamp( */
+  /*   var(--min-fs-rem), */
+  /*   var(--min-fs-rem) + var(--slope), */
+  /*   var(--max-fs-rem) */
+  /* ); */
+
+  --xx-s: 0.381;
+  --x-s: 0.618;
+  --s: 1;
+  --m: 1.618;
+  --l: 2.617;
+  --x-l: 4.235;
+  --xx-l: 6.853;
+
+  /*https://fluid.style*/
+  /*x -> x * 1.333*/
+  --space-xxx-s: clamp(0.034rem, 0.03rem + 0.018vw, 0.045rem);
+  --space-xx-s: clamp(0.381rem, 0.339rem + 0.21vw, 0.507rem);
+  --space-x-s: clamp(0.618rem, 0.55rem + 0.342vw, 0.823rem);
+  --space-s: clamp(1rem, 0.889rem + 0.555vw, 1.333rem);
+  --space-m: clamp(1.618rem, 1.439rem + 0.897vw, 2.156rem);
+  --space-l: clamp(2.617rem, 2.327rem + 1.452vw, 3.488rem);
+  --space-x-l: clamp(4.235rem, 3.765rem + 2.35vw, 5.645rem);
+  --space-xx-l: clamp(6.853rem, 6.092rem + 3.803vw, 9.135rem);
+
+  --font-size-s: var(--space-s);
+  --font-size-m: var(--space-m);
+  --font-size-l: var(--space-l);
+
+  --space-letter-s: 0.03em;
+  --space-letter-m: normal;
+  --space-letter-l: -0.03em;
+
+  /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
+
+  /*--fluid-s: clamp(1rem, 0.7037rem + 1.4815vw, 2rem);*/
+  /*--fluid-m: clamp(1.6125rem, 1.1329rem + 2.3981vw, 3.2313rem);*/
+  /*--fluid-l: clamp(2.6063rem, 1.8303rem + 3.8796vw, 5.225rem);*/
+
+  /* */
+  /* --spacing-one: calc(var(--base-size) * 0.5); */
+  /* --spacing-two: calc(var(--base-size) * 1); */
+  /* --spacing-three: calc(var(--base-size) * 1.5); */
+  /**/
+  /* --spacing-letter-base: 0.0625rem; */
+
+  /* */
+  --weight-heavy: 600;
+}
+
+/* || Typography */
 
 /* https://rsms.me/inter/ */
 
 :root {
-  /* color */
-  --color-hue-main: 210deg;
-  --color-selected: lch(45 110 var(--color-hue-main));
-  --color-link: lch(40 130 var(--color-hue-main));
-  --color-link-visited: lch(30 120 var(--color-hue-main));
-  --color-header: #000;
-  --color-sub-header: #222;
-  --color-text: #333;
-  /* */
-  --size-normal: 1rem;
-  --size-big: 3rem;
-  /* */
-  --spacing-one: 0.4rem;
-  --spacing-two: 0.8rem;
-  --spacing-three: 1.2rem;
-  /* */
-  --weight-heavy: 500;
-}
-
-:root {
-  font-family: Inter, sans-serif;
-  font-feature-settings:
-    "liga" 1,
-    "calt" 1; /* fix for Chrome */
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 @supports (font-variation-settings: light) {
   :root {
-    font-family: InterVariable, sans-serif;
+    font-family: "Urbanist", sans-serif;
   }
+}
+
+/* || General */
+
+body {
+  display: grid;
+  /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
+  grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
+  grid-template-rows: auto 1fr var(--space-l);
+  row-gap: var(--space-m);
+  background: var(--color-background);
+  line-height: var(--m);
 }
 
 /* || Fonts and spacing */
 
 h1 {
-  font-size: var(--size-big);
-  line-height: calc(var(--size-big), 1.1);
-  margin-block-end: var(--spacing-three);
+  font-family: "Jost";
+  font-size: var(--font-size-l);
+  margin-block-end: var(--space-m);
+  letter-spacing: var(--space-letter-l);
+  line-height: var(--s);
+  max-width: 20ch;
+  /*outline: 2px solid;*/
 }
 
 h2 {
+  font-family: "Jost";
+  font-size: var(--font-size-s);
   font-weight: var(--weight-heavy);
-  line-height: calc(var(--size-normal), 1.2);
+  margin-block-end: var(--space-x-s);
+  letter-spacing: var(--space-letter-m);
   color: var(--color-sub-header);
-  margin-block-end: var(--spacing-two);
+  /*outline: 2px solid;*/
 }
 
 p {
-  font-size: var(--size-normal);
-  line-height: calc(var(--size-normal), 1.2);
+  font-size: var(--font-size-s);
+  margin-block-end: var(--space-x-s);
+  letter-spacing: var(--space-letter-s);
+  /* max-width: 70ch; */
+  text-wrap: balance;
   color: var(--color-text);
-  margin-block-end: var(--spacing-one);
+  /*outline: 2px solid red;*/
+}
+
+p::first-letter {
+  font-size: var(--font-size-m);
+  font-weight: var(--weight-heavy);
+  color: var(--color-popout);
+}
+
+p::first-line {
+  line-height: var(--s);
 }
 
 a {
+  font-size: var(--font-size-s);
   font-weight: var(--weight-heavy);
   color: var(--color-link);
+  /*outline: 2px solid red;*/
 }
 
-a:visited {
-  color: var(--color-link-visited);
+header,
+footer {
+  grid-column-start: 2;
 }
-
-/* || General */
-
-/* using flex to define some spacing... 
- * just testing...
-*/
-body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-three);
-  margin: var(--spacing-three);
-}
-
-/* || Header and Main Naviagtion */
 
 header {
-  display: inline-grid;
-  grid-template-columns: min-content min-content min-content;
-  grid-gap: 5px;
+  font-family: "Jost";
+  display: flex;
+  gap: var(--space-xx-s) var(--space-s);
+  flex-wrap: wrap;
+  /*margin-block-start: var(--space-s);*/
+  /* outline: 1px solid blueviolet; */
 }
 
 .header__item {
-  padding: 5px;
-  border: 1px solid #999;
-  width: 120px;
-  min-width: fit-content;
-  text-align: center;
+  /*padding: var(--space-x-s);*/
+  color: var(--color-link-header);
+  text-decoration: none;
+  /* outline: 2px dotted red; */
 }
 
+/*.header__item:first-child {*/
+/*padding-inline-start: 0;*/
+/*}*/
+
 .header__item--active {
-  border-color: var(--color-selected);
-  border-width: 2px;
+  text-decoration: underline;
+  text-underline-offset: 25%;
+  text-decoration-thickness: 10%;
+  text-decoration-color: var(--color-link-header-active);
+  color: var(--color-link-header-active);
+}
+
+article {
+  grid-column-start: 2;
+}
+
+.icons img {
+  width: var(--space-m);
+  height: var(--space-m);
 }

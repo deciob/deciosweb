@@ -39,7 +39,15 @@
     </header>
     <article>{% block content %}{% endblock %}</article>
     <footer>
-      <h2>This is the footer</h2>
+      <ul class="icons">
+        <li>
+          <a rel="me" href="https://github.com/deciob">
+            <img
+              src="{{ url_for('static', filename='github-mark.png') }}"
+              alt="GitHub"
+          /></a>
+        </li>
+      </ul>
     </footer>
   </body>
 </html>

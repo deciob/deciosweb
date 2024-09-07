@@ -148,14 +148,21 @@ table {
 
 :root {
   /* color */
-  --color-background: #edece4;
+  --color-background: #e9e8e6;
   --color-hue-main: 230deg;
 
-  --color-link: lch(30 130 var(--color-hue-main));
+  /* lch(57.97% 99.84 44.93) */
+  --color-popout: lch(56 77 44.93);
+
+  /* lch(66.93% 31.32 213.52) */
+  --color-link: lch(42 33 213.52);
+
+  /* --color-link: lch(30 130 var(--color-hue-main)); */
   --color-link-visited: lch(20 120 var(--color-hue-main));
 
-  --color-link-header: lch(20 20 var(--color-hue-main));
-  --color-link-header-active: brown;
+  /* --color-link-header: lch(20 20 var(--color-hue-main)); */
+  --color-link-header: var(--color-link);
+  --color-link-header-active: var(--color-popout);
 
   --color-header: #000;
   --color-sub-header: #222;
@@ -248,11 +255,12 @@ body {
   display: grid;
   /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
   grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr var(--space-l);
   row-gap: var(--space-m);
   background: var(--color-background);
-  line-height: 1.618;
+  line-height: var(--m);
 }
+
 /* || Fonts and spacing */
 
 h1 {
@@ -260,6 +268,8 @@ h1 {
   font-size: var(--font-size-l);
   margin-block-end: var(--space-m);
   letter-spacing: var(--space-letter-l);
+  line-height: var(--s);
+  max-width: 20ch;
   /*outline: 2px solid;*/
 }
 
@@ -286,7 +296,11 @@ p {
 p::first-letter {
   font-size: var(--font-size-m);
   font-weight: var(--weight-heavy);
-  color: brown;
+  color: var(--color-popout);
+}
+
+p::first-line {
+  line-height: var(--s);
 }
 
 a {
@@ -304,8 +318,8 @@ footer {
 header {
   font-family: "Jost";
   display: flex;
-  gap: var(--space-s);
-  flex-wrap: nowrap;
+  gap: var(--space-xx-s) var(--space-s);
+  flex-wrap: wrap;
   /*margin-block-start: var(--space-s);*/
   /* outline: 1px solid blueviolet; */
 }
@@ -331,4 +345,9 @@ header {
 
 article {
   grid-column-start: 2;
+}
+
+.icons img {
+  width: var(--space-m);
+  height: var(--space-m);
 }
