@@ -13,3 +13,5 @@ instance/
 htmlcov/
 
 *.egg-info/
+
+flaskr/static/.webassets-cache/

@@ -6,7 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Decio's web</title>
-    <link rel="preconnect" href="https://rsms.me/" />
+    <!--link rel="preconnect" href="https://rsms.me/" />-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://indestructibletype.com/fonts/Jost.css"
+      type="text/css"
+      charset="utf-8"
+    />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     {% assets "css_all" %}
       <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
@@ -27,7 +39,15 @@
     </header>
     <article>{% block content %}{% endblock %}</article>
     <footer>
-      <h2>This is the footer</h2>
+      <ul class="icons">
+        <li>
+          <a rel="me" href="https://github.com/deciob">
+            <img
+              src="{{ url_for('static', filename='github-mark.png') }}"
+              alt="GitHub"
+          /></a>
+        </li>
+      </ul>
     </footer>
   </body>
 </html>
