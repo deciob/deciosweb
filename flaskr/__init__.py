@@ -7,7 +7,8 @@ def create_app():
     app = Flask(__name__)
     assets = Environment(app)
 
-    css = Bundle('css-reset.css', 'variables.css', 'main.css', output='gen/packed.css')
+    css = Bundle('reset.css', 'shared-values.css', 'layout.css', 
+                 'typography.css', 'main.css', output='gen/packed.css')
     assets.register('css_all', css)
 
     from . import home
