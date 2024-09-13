@@ -305,10 +305,17 @@ a {
 }
 
 .header__item {
-  /*padding: var(--space-x-s);*/
   color: var(--color-link-header);
   text-decoration: none;
   /* outline: 2px dotted red; */
+}
+
+.header__item:focus {
+  outline: none;
+}
+
+.header__item:focus-visible {
+  outline: 2px dashed var(--color-primary);
 }
 
 .header__item--active {
