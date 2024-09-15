@@ -9,6 +9,11 @@ app.config['FREEZER_BASE_URL'] = "https://deciob.github.io/deciosweb/"
 
 freezer = Freezer(app)
 
+# def url_generator():
+#     for article in articles:
+#         yield f'/article-{article.id}.html'
+#
+# freezer.register_generator(url_generator)
 
 if __name__ == '__main__':
     freezer.freeze()

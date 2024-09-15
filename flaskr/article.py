@@ -4,7 +4,7 @@ from flask import render_template
 
 bp = Blueprint("article", __name__)
 
-@bp.route("/articles/<int:article>")
+@bp.route("/articles/<int:article>.html")
 def article(article):
     return render_template(f'articles/article-{article}.html')
 
