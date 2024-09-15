@@ -17,6 +17,9 @@ def create_app():
     from . import articles
     app.register_blueprint(articles.bp)
 
+    from . import article
+    app.register_blueprint(article.bp)
+
     from . import visualisations
     app.register_blueprint(visualisations.bp)
 

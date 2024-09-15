@@ -147,47 +147,21 @@ table {
 /* || Variables */
 
 :root {
-  /* color */
+  /* colors */
+
   --color-background: #e9e8e6;
-  --color-hue-main: 230deg;
+  --color-primary: lch(56 77 44.93);
+  --color-secondary: lch(42 33 213.52);
 
-  /* lch(57.97% 99.84 44.93) */
-  --color-popout: lch(56 77 44.93);
-
-  /* lch(66.93% 31.32 213.52) */
-  --color-link: lch(42 33 213.52);
-
-  /* --color-link: lch(30 130 var(--color-hue-main)); */
-  --color-link-visited: lch(20 120 var(--color-hue-main));
-
-  /* --color-link-header: lch(20 20 var(--color-hue-main)); */
+  --color-link: var(--color-secondary);
   --color-link-header: var(--color-link);
-  --color-link-header-active: var(--color-popout);
+  --color-link-header-active: var(--color-primary);
 
   --color-header: #000;
   --color-sub-header: #222;
   --color-text: #333;
 
-  /* Fluid scaling, follows: 
-   min + (max - min) * ((100vw - min-width) / (max-width - min-width)) */
-
-  /* --min-fs: 1; */
-  /* --max-fs: 1.2; */
-  /* --min-vw: 25; */
-  /* --max-vw: 75; */
-  /**/
-  /* --min-fs-rem: var(--min-fs) * 1rem; */
-  /* --max-fs-rem: var(--max-fs) * 1rem; */
-  /* --min-vw-rem: var(--min-vw) * 1rem; */
-  /**/
-  /* --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) / */
-  /*   (var(--max-vw) - var(--min-vw)); */
-  /**/
-  /* --base-size: clamp( */
-  /*   var(--min-fs-rem), */
-  /*   var(--min-fs-rem) + var(--slope), */
-  /*   var(--max-fs-rem) */
-  /* ); */
+  /* Golden ration values */
 
   --xx-s: 0.381;
   --x-s: 0.618;
@@ -196,6 +170,9 @@ table {
   --l: 2.617;
   --x-l: 4.235;
   --xx-l: 6.853;
+
+  /* Fluid scaling, follows: 
+   min + (max - min) * ((100vw - min-width) / (max-width - min-width)) */
 
   /*https://fluid.style*/
   /*x -> x * 1.333*/
@@ -216,26 +193,39 @@ table {
   --space-letter-m: normal;
   --space-letter-l: -0.03em;
 
-  /* @link https://utopia.fyi/clamp/calculator?a=320,1400,16—32|25.8—51.7|41.7—83.6 */
+  /* Bold? */
 
-  /*--fluid-s: clamp(1rem, 0.7037rem + 1.4815vw, 2rem);*/
-  /*--fluid-m: clamp(1.6125rem, 1.1329rem + 2.3981vw, 3.2313rem);*/
-  /*--fluid-l: clamp(2.6063rem, 1.8303rem + 3.8796vw, 5.225rem);*/
-
-  /* */
-  /* --spacing-one: calc(var(--base-size) * 0.5); */
-  /* --spacing-two: calc(var(--base-size) * 1); */
-  /* --spacing-three: calc(var(--base-size) * 1.5); */
-  /**/
-  /* --spacing-letter-base: 0.0625rem; */
-
-  /* */
   --weight-heavy: 600;
+  --weight-vheavy: 900;
+}
+
+/* Layout */
+
+body {
+  display: grid;
+  /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
+  grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
+  grid-template-rows: auto 1fr var(--space-l);
+  row-gap: var(--space-m);
+  line-height: var(--m);
+}
+
+header,
+footer {
+  grid-column-start: 2;
+}
+
+article {
+  grid-column-start: 2;
+}
+
+header {
+  display: flex;
+  gap: var(--space-xx-s) var(--space-s);
+  flex-wrap: wrap;
 }
 
 /* || Typography */
-
-/* https://rsms.me/inter/ */
 
 :root {
   font-family: "Urbanist", sans-serif;
@@ -249,32 +239,37 @@ table {
   }
 }
 
-/* || General */
-
 body {
-  display: grid;
-  /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
-  grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
-  grid-template-rows: auto 1fr var(--space-l);
-  row-gap: var(--space-m);
-  background: var(--color-background);
-  line-height: var(--m);
+  margin-block-start: var(--space-s);
 }
 
-/* || Fonts and spacing */
+.main-block {
+  margin-inline-start: var(--space-s);
+  margin-inline-end: var(--space-s);
+}
+
+header.main-block {
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+header.main-block,
+h1,
+h2 {
+  font-family: "Jost", sans-serif;
+}
 
 h1 {
-  font-family: "Jost";
   font-size: var(--font-size-l);
   margin-block-end: var(--space-m);
   letter-spacing: var(--space-letter-l);
   line-height: var(--s);
   max-width: 20ch;
+  color: var(--header);
   /*outline: 2px solid;*/
 }
 
 h2 {
-  font-family: "Jost";
   font-size: var(--font-size-s);
   font-weight: var(--weight-heavy);
   margin-block-end: var(--space-x-s);
@@ -294,14 +289,14 @@ p {
 }
 
 p::first-letter {
-  font-size: var(--font-size-m);
-  font-weight: var(--weight-heavy);
-  color: var(--color-popout);
+  /* font-size: var(--font-size-m); */
+  font-weight: var(--weight-vheavy);
+  color: var(--color-primary);
 }
 
-p::first-line {
-  line-height: var(--s);
-}
+/* p::first-line { */
+/*   line-height: var(--s); */
+/* } */
 
 a {
   font-size: var(--font-size-s);
@@ -310,18 +305,40 @@ a {
   /*outline: 2px solid red;*/
 }
 
-header,
-footer {
-  grid-column-start: 2;
+.header__item {
+  color: var(--color-link-header);
+  text-decoration: none;
+  /* outline: 2px dotted red; */
 }
 
-header {
-  font-family: "Jost";
-  display: flex;
-  gap: var(--space-xx-s) var(--space-s);
-  flex-wrap: wrap;
-  /*margin-block-start: var(--space-s);*/
-  /* outline: 1px solid blueviolet; */
+.header__item:focus {
+  outline: none;
+}
+
+.header__item:focus-visible {
+  outline: 2px dashed var(--color-primary);
+}
+
+.header__item--active {
+  text-decoration: underline;
+  text-underline-offset: 25%;
+  text-decoration-thickness: 10%;
+  text-decoration-color: var(--color-link-header-active);
+  color: var(--color-link-header-active);
+}
+
+em {
+  font-style: italic;
+}
+
+/* || General */
+
+body {
+  background: var(--color-background);
+}
+
+::marker {
+  color: var(--color-primary);
 }
 
 .header__item {
@@ -343,11 +360,18 @@ header {
   color: var(--color-link-header-active);
 }
 
-article {
-  grid-column-start: 2;
-}
-
 .icons img {
   width: var(--space-m);
   height: var(--space-m);
+}
+
+ul ::marker {
+  font-size: var(--font-size-s);
+  white-space: collapse;
+}
+
+.list-style--visible {
+  list-style: disc;
+  list-style-position: inside;
+  text-decoration: none;
 }

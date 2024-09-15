@@ -243,21 +243,23 @@ body {
   margin-block-start: var(--space-s);
 }
 
-header,
-footer,
-article {
+.main-block {
   margin-inline-start: var(--space-s);
   margin-inline-end: var(--space-s);
 }
 
-header {
-  font-family: "Jost", sans-serif;
+header.main-block {
   font-optical-sizing: auto;
   font-style: normal;
 }
 
+header.main-block,
+h1,
+h2 {
+  font-family: "Jost", sans-serif;
+}
+
 h1 {
-  font-family: "Jost";
   font-size: var(--font-size-l);
   margin-block-end: var(--space-m);
   letter-spacing: var(--space-letter-l);
@@ -268,7 +270,6 @@ h1 {
 }
 
 h2 {
-  font-family: "Jost";
   font-size: var(--font-size-s);
   font-weight: var(--weight-heavy);
   margin-block-end: var(--space-x-s);
@@ -326,10 +327,18 @@ a {
   color: var(--color-link-header-active);
 }
 
+em {
+  font-style: italic;
+}
+
 /* || General */
 
 body {
   background: var(--color-background);
+}
+
+::marker {
+  color: var(--color-primary);
 }
 
 .header__item {
@@ -351,11 +360,18 @@ body {
   color: var(--color-link-header-active);
 }
 
-article {
-  grid-column-start: 2;
-}
-
 .icons img {
   width: var(--space-m);
   height: var(--space-m);
+}
+
+ul ::marker {
+  font-size: var(--font-size-s);
+  white-space: collapse;
+}
+
+.list-style--visible {
+  list-style: disc;
+  list-style-position: inside;
+  text-decoration: none;
 }

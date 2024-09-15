@@ -4,6 +4,10 @@ body {
   background: var(--color-background);
 }
 
+::marker {
+  color: var(--color-primary);
+}
+
 .header__item {
   /*padding: var(--space-x-s);*/
   color: var(--color-link-header);
@@ -23,11 +27,18 @@ body {
   color: var(--color-link-header-active);
 }
 
-article {
-  grid-column-start: 2;
-}
-
 .icons img {
   width: var(--space-m);
   height: var(--space-m);
+}
+
+ul ::marker {
+  font-size: var(--font-size-s);
+  white-space: collapse;
+}
+
+.list-style--visible {
+  list-style: disc;
+  list-style-position: inside;
+  text-decoration: none;
 }

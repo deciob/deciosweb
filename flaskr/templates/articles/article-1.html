@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block header_articles %}
+  <a
+    class="header__item header__item--active"
+    href="{{ url_for('articles.articles') }}"
+    >Articles</a
+  >
+{% endblock %}
+{% block content %}
+  <h1>CSS Layouts</h1>
+  <article>
+    <h2>Flow Layout</h2>
+    <p>
+      The
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout"
+        ><em>Flow Layout</em></a
+      >, also called the <em>Normal Flow</em>, is the original CSS layout, from
+      the days where the Web was just a collections of text documents with
+      links.
+    </p>
+  </article>
+{% endblock %}

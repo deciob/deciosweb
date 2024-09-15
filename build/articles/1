@@ -20,36 +20,51 @@
       charset="utf-8"
     />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    {% assets "css_all" %}
-      <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
-    {% endassets %}
+    
+      <link rel="stylesheet" type="text/css" href="/deciosweb/static/gen/packed.css?9aede33f" />
+    
   </head>
 
   <body>
     <header class="main-block">
-      {% block header_home %}
-        <a class="header__item" href="{{ url_for('homepage.homepage') }}">
+      
+        <a class="header__item" href="/deciosweb/">
           Home</a
         >
-      {% endblock %}
-      {% block header_articles %}
-        <a class="header__item" href="{{ url_for('articles.articles') }}"
-          >Articles</a
-        >
-      {% endblock %}
-      {% block header_visualisations %}
-        <a class="header__item" href="{{ url_for('visualisations.homepage') }}"
+      
+      
+  <a
+    class="header__item header__item--active"
+    href="/deciosweb/articles/"
+    >Articles</a
+  >
+
+      
+        <a class="header__item" href="/deciosweb/visualisations/"
           >Visualisations</a
         >
-      {% endblock %}
+      
     </header>
-    <article class="main-block">{% block content %}{% endblock %}</article>
+    <article class="main-block">
+  <h1>CSS Layouts</h1>
+  <article>
+    <h2>Flow Layout</h2>
+    <p>
+      The
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout"
+        ><em>Flow Layout</em></a
+      >, also called the <em>Normal Flow</em>, is the original CSS layout, from
+      the days where the Web was just a collections of text documents with
+      links.
+    </p>
+  </article>
+</article>
     <footer class="main-block">
       <ul class="icons">
         <li>
           <a rel="me" href="https://github.com/deciob">
             <img
-              src="{{ url_for('static', filename='github-mark.png') }}"
+              src="/deciosweb/static/github-mark.png"
               alt="github"
           /></a>
         </li>
