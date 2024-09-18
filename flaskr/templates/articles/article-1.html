@@ -15,8 +15,46 @@
       <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout"
         ><em>Flow Layout</em></a
       >, also called the <em>Normal Flow</em>, is the original CSS layout, from
-      the days where the Web was just a collections of text documents with
-      links.
+      the days when the Web was just a collection of text documents with links.
+      In other words, it is the layout that mostly resembles a printed book.
     </p>
+    <p>
+      The default <em>position</em> in Normal Flow is <em>static</em>. With
+      position static none of the following attributes have effect:
+      <em>top, righ, bottom, left, z-index</em>. That makes sense, as we are
+      simply following the flow, and blocks of content get positioned one after
+      the other, and never overlap.
+    </p>
+    <p>
+      To remove an element from the flow you need to position it:
+      <em>relative, absolute, fixed, sticky</em>.
+    </p>
+    <table>
+      <tr>
+        <th>Position</th>
+        <th>Removed from flow?</th>
+        <th>New stacking context?</th>
+      </tr>
+      <tr>
+        <td>Relative</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Absolute</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Fixed</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Sticky</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+    </table>
   </article>
 {% endblock %}
