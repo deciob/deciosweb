@@ -10,10 +10,7 @@ body {
 }
 
 header,
-footer {
-  grid-column-start: 2;
-}
-
+footer,
 article {
   grid-column-start: 2;
 }
@@ -22,4 +19,11 @@ header {
   display: flex;
   gap: var(--space-xx-s) var(--space-s);
   flex-wrap: wrap;
+}
+
+/* | viz */
+
+.viz {
+  grid-column-start: 3;
+  grid-row-start: 2;
 }

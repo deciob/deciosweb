@@ -211,10 +211,7 @@ body {
 }
 
 header,
-footer {
-  grid-column-start: 2;
-}
-
+footer,
 article {
   grid-column-start: 2;
 }
@@ -223,6 +220,13 @@ header {
   display: flex;
   gap: var(--space-xx-s) var(--space-s);
   flex-wrap: wrap;
+}
+
+/* | viz */
+
+.viz {
+  grid-column-start: 3;
+  grid-row-start: 2;
 }
 
 /* || Typography */
@@ -374,4 +378,28 @@ ul ::marker {
   list-style: disc;
   list-style-position: inside;
   text-decoration: none;
+}
+
+/* .viz > div { */
+/*   position: absolute; */
+/* } */
+
+.viz {
+  container-type: inline-size;
+}
+
+.viz__circle-1 {
+  width: var(--space-x-l);
+  height: var(--space-x-l);
+  background: var(--color-primary);
+  border-radius: var(--space-xx-l);
+}
+/**/
+/* @container (max-width: var(--space-x-l)) { */
+@container (max-width: 5rem) {
+  /* @container (max-width: calc(var(--space-x-l) + 1rem)) { */
+  .viz__circle-1 {
+    width: 0;
+    height: 0;
+  }
 }

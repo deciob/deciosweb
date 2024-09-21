@@ -1,0 +1,23 @@
+/* .viz > div { */
+/*   position: absolute; */
+/* } */
+
+.viz {
+  container-type: inline-size;
+}
+
+.viz__circle-1 {
+  width: var(--space-x-l);
+  height: var(--space-x-l);
+  background: var(--color-primary);
+  border-radius: var(--space-xx-l);
+}
+/**/
+/* @container (max-width: var(--space-x-l)) { */
+@container (max-width: 5rem) {
+  /* @container (max-width: calc(var(--space-x-l) + 1rem)) { */
+  .viz__circle-1 {
+    width: 0;
+    height: 0;
+  }
+}

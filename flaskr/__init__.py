@@ -8,7 +8,7 @@ def create_app():
     assets = Environment(app)
 
     css = Bundle('reset.css', 'shared-values.css', 'layout.css', 
-                 'typography.css', 'main.css', output='gen/packed.css')
+                 'typography.css', 'main.css', 'viz.css', output='gen/packed.css')
     assets.register('css_all', css)
 
     from . import home
