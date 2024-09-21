@@ -1,7 +1,11 @@
 /* || General */
 
-body {
-  background: var(--color-background);
+html {
+  height: 100%;
+  background: linear-gradient(
+    var(--color-background-l),
+    var(--color-background-d)
+  );
 }
 
 ::marker {

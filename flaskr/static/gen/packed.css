@@ -149,7 +149,9 @@ table {
 :root {
   /* colors */
 
-  --color-background: #e9e8e6;
+  --color-background: lch(92% 1.1 85.61);
+  --color-background-d: lch(80% 1.1 85.61);
+  --color-background-l: lch(94% 1.1 85.61);
   --color-primary: lch(56 77 44.93);
   --color-secondary: lch(42 33 213.52);
 
@@ -333,8 +335,12 @@ em {
 
 /* || General */
 
-body {
-  background: var(--color-background);
+html {
+  height: 100%;
+  background: linear-gradient(
+    var(--color-background-l),
+    var(--color-background-d)
+  );
 }
 
 ::marker {
