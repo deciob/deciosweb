@@ -3,7 +3,7 @@
 body {
   display: grid;
   /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
-  grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
+  grid-template-columns: 1fr minmax(0, 80ch) 1.618fr;
   grid-template-rows: auto 1fr var(--space-l);
   row-gap: var(--space-m);
   line-height: var(--m);

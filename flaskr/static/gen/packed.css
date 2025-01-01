@@ -206,7 +206,7 @@ table {
 body {
   display: grid;
   /* grid-template-columns: 1fr repeat(8, minmax(0, calc(70ch / 8))) 1.618fr; */
-  grid-template-columns: 1fr minmax(0, 70ch) 1.618fr;
+  grid-template-columns: 1fr minmax(0, 80ch) 1.618fr;
   grid-template-rows: auto 1fr var(--space-l);
   row-gap: var(--space-m);
   line-height: var(--m);
@@ -255,28 +255,34 @@ header.main-block {
   font-style: normal;
 }
 
-header.main-block,
-h1,
-h2 {
+:is(header.main-block, h1, h2) {
   font-family: "Jost", sans-serif;
+}
+
+:is(h1, h2):first-child {
+  margin-block-start: 0;
 }
 
 h1 {
   font-size: var(--font-size-l);
+  margin-block-start: var(--space-m);
   margin-block-end: var(--space-m);
   letter-spacing: var(--space-letter-l);
   line-height: var(--s);
   max-width: 20ch;
   color: var(--header);
+  text-wrap: balance;
   /*outline: 2px solid;*/
 }
 
 h2 {
   font-size: var(--font-size-s);
   font-weight: var(--weight-heavy);
+  margin-block-start: var(--space-s);
   margin-block-end: var(--space-x-s);
   letter-spacing: var(--space-letter-m);
   color: var(--color-sub-header);
+  text-wrap: balance;
   /*outline: 2px solid;*/
 }
 
@@ -285,7 +291,7 @@ p {
   margin-block-end: var(--space-x-s);
   letter-spacing: var(--space-letter-s);
   /* max-width: 70ch; */
-  text-wrap: balance;
+  text-wrap: pretty;
   color: var(--color-text);
   /*outline: 2px solid red;*/
 }
@@ -293,7 +299,7 @@ p {
 p::first-letter {
   /* font-size: var(--font-size-m); */
   font-weight: var(--weight-vheavy);
-  color: var(--color-primary);
+  /* color: var(--color-primary); */
 }
 
 /* p::first-line { */
@@ -336,11 +342,11 @@ em {
 /* || General */
 
 html {
-  height: 100%;
-  background: linear-gradient(
-    var(--color-background-l),
-    var(--color-background-d)
-  );
+  /* background: linear-gradient( */
+  /*   var(--color-background-l), */
+  /*   var(--color-background-d) */
+  /* ); */
+  background: --color-background-l;
 }
 
 ::marker {

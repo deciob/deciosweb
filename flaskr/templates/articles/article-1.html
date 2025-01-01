@@ -7,16 +7,53 @@
   >
 {% endblock %}
 {% block content %}
-  <h1>CSS Layouts</h1>
-  <article>
-    <h2>Flow Layout</h2>
-    <p>
-      The
-      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout"
-        ><em>Flow Layout</em></a
-      >, also called the <em>Normal Flow</em>, is the original CSS layout, from
-      the days where the Web was just a collections of text documents with
-      links.
-    </p>
-  </article>
+  <h1>My most memorable CSS misconceptions</h1>
+  <p>
+    I have been writing CSS for more than twenty years. For a short period of
+    time , about ten years ago, it was my main daily focus; it was then that I
+    learned most about it. For the rest of the time, as a GIS developer, a
+    full-stack Web developer and a front-end developer, CSS was never my main
+    focus. Maybe for this, after so many years, it's a language that I still do
+    not feel I master. Or maybe that is just CSS, it will always defy you, no
+    matter how much you put into it.
+  </p>
+  <p>
+    Anyhow, here is a list of some aspects of the language that got me tripped
+    up over the years.
+  </p>
+  <h2>z-index</h2>
+  <p>
+    Who didn't stumble upon this one at some point? You set a ridiculously high
+    <i>z-index</i> value on an <b>HTML</b> element, only to realise, with great
+    frustration, that it doesn't work, the element refuses to make its way up
+    the stack.
+  </p>
+  <p>
+    One things I learned pretty soon is that the element I am targeting needs to
+    be positioned relative or absolute. And only much later I found the time to
+    read and understand that things are a bit more nuanced than that. That in
+    order to work, a z-index needs to create a
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context"
+      >stacking context</a
+    >
+    and that this can be done in many ways, the permutations are multiple.
+  </p>
+  <p>
+    So, applying a z-index value to an element in
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow"
+      >normal flow</a
+    >will not create a stacking context. That did not make much sense to me in
+    the days, but feels pretty obvious now. Normal flow is the default layout
+    for HTML documents, the original layout, where blocks of text flow from top
+    to bottom, without never overlapping. Hence, applying a z-index property to
+    a block of text in normal flow made no sense, but it did if you removed it
+    from the flow by applying a relative or absolute position.
+  </p>
+  <p>
+    One last thing to remember is that z-index values work within their own
+    stack context, they will not influence other contexts. If something is not
+    working as expected within a complex layout, then this might be the reason.
+  </p>
 {% endblock %}
