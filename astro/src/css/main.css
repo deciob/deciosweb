@@ -5,7 +5,7 @@ html {
   /*   var(--color-background-l), */
   /*   var(--color-background-d) */
   /* ); */
-  background: --color-background-l;
+  background: var(--color-background-l);
 }
 
 ::marker {

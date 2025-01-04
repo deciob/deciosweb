@@ -1,3 +1,26 @@
+---
+// Supports weights 100-900
+import "@fontsource-variable/urbanist";
+import "@fontsource-variable/jost";
+
+import "../css/reset.css";
+import "../css/shared-values.css";
+import "../css/layout.css";
+import "../css/typography.css";
+import "../css/main.css";
+
+const { context } = Astro.props;
+
+const isActive = (c: Page) => (c === context ? true : false);
+const setClass = (c: Page) => {
+  const base = "header__item";
+  if (isActive(c)) {
+    return `${base} ${base}--active`;
+  }
+  return base;
+};
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,28 +29,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Decio's web</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://indestructibletype.com/fonts/Jost.css"
-      type="text/css"
-      charset="utf-8"
-    />
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/shared-values.css" />
-    <link rel="stylesheet" href="/css/layout.css" />
-    <link rel="stylesheet" href="/css/typography.css" />
-    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <header class="main-block">
-      <a class="header__item" href="/"> Home</a>
-      <a class="header__item" href="/photography">Photography</a>
+      <a class={setClass("INDEX")} href="/"> Home</a>
+      <a class={setClass("PHOTOGRAPHY")} href="/photography">Photography</a>
     </header>
     <slot />
     <footer class="main-block">

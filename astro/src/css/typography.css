@@ -1,15 +1,7 @@
 /* || Typography */
 
 :root {
-  font-family: "Urbanist", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-
-@supports (font-variation-settings: light) {
-  :root {
-    font-family: "Urbanist", sans-serif;
-  }
+  font-family: "Urbanist Variable", sans-serif;
 }
 
 body {
@@ -27,7 +19,7 @@ header.main-block {
 }
 
 :is(header.main-block, h1, h2) {
-  font-family: "Jost", sans-serif;
+  font-family: "Jost Variable", sans-serif;
 }
 
 :is(h1, h2):first-child {
@@ -69,7 +61,7 @@ p {
 
 p::first-letter {
   /* font-size: var(--font-size-m); */
-  font-weight: var(--weight-vheavy);
+  font-weight: var(--weight-x-heavy);
   /* color: var(--color-primary); */
 }
 

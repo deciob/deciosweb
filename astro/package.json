@@ -12,6 +12,8 @@
     "astro": "^5.1.1"
   },
   "devDependencies": {
+    "@fontsource-variable/jost": "^5.1.2",
+    "@fontsource-variable/urbanist": "^5.1.1",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
   }
