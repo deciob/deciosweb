@@ -18,6 +18,16 @@ article {
   grid-column-start: 2;
 }
 
+.cards-content article {
+  grid-column: 1 / 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  flex-flow: wrap;
+}
+
 header {
   display: flex;
   gap: var(--space-xx-s) var(--space-s);

@@ -19,6 +19,13 @@ const setClass = (c: Page) => {
   }
   return base;
 };
+
+const setCardsClass = () => {
+  if (isActive("PHOTOS")) {
+  return "cards-content";
+  }
+  return "";
+};
 ---
 
 <!doctype html>
@@ -30,10 +37,10 @@ const setClass = (c: Page) => {
     <meta name="generator" content={Astro.generator} />
     <title>Decio's web</title>
   </head>
-  <body>
+  <body class={setCardsClass()}>
     <header class="main-block">
       <a class={setClass("INDEX")} href="/"> Home</a>
-      <a class={setClass("PHOTOGRAPHY")} href="/photography">Photography</a>
+      <a class={setClass("PHOTOS")} href="/photos">Photography</a>
     </header>
     <slot />
     <footer class="main-block">
