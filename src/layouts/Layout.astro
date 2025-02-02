@@ -9,20 +9,18 @@ import "../css/layout.css";
 import "../css/typography.css";
 import "../css/main.css";
 
+import MainHeader from "../components/MainHeader.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  context: Page;
+}
+
 const { context } = Astro.props;
 
-const isActive = (c: Page) => (c === context ? true : false);
-const setClass = (c: Page) => {
-  const base = "header__item";
-  if (isActive(c)) {
-    return `${base} ${base}--active`;
-  }
-  return base;
-};
-
 const setCardsClass = () => {
-  if (isActive("PHOTOS")) {
-  return "cards-content";
+  if (context === "PHOTOS") {
+    return "cards-content";
   }
   return "";
 };
@@ -38,20 +36,9 @@ const setCardsClass = () => {
     <title>Decio's web</title>
   </head>
   <body class={setCardsClass()}>
-    <header class="main-block">
-      <a class={setClass("INDEX")} href="/"> Home</a>
-      <a class={setClass("PHOTOS")} href="/photos">Photography</a>
-    </header>
+    <MainHeader context={context} />
     <slot />
-    <footer class="main-block">
-      <ul class="icons">
-        <li>
-          <a rel="me" href="https://github.com/deciob">
-            <img src="/github-mark.png" alt="github" /></a
-          >
-        </li>
-      </ul>
-    </footer>
+    <Footer />
   </body>
 </html>
 
