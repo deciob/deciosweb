@@ -1,4 +1,5 @@
 ---
+import { getImageName } from "../helpers/helpers";
 import Layout from "../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 
@@ -18,16 +19,19 @@ const imageSources = await Promise.all(
   Object.values(images).map(async (resolver) => await resolver())
 );
 
+
 ---
 
 <Layout context="PHOTOS">
   <article class="main-block">
       {imageSources.map((image) => (
+      <a href=`photos/${getImageName(image.default.src).replace("thumbnail", "medium")}`>
         <Image 
           src={image.default} 
           alt={`Image from directory`} 
           format="webp"
         />
+        </a>
       ))}
   </article>
 </Layout>
