@@ -46,3 +46,7 @@ ul ::marker {
   list-style-position: inside;
   text-decoration: none;
 }
+
+img {
+  object-fit: contain;
+}

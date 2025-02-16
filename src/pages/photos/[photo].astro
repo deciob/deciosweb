@@ -49,11 +49,14 @@ const { photo } = Astro.params;
 const { image } = Astro.props;
 ---
 
-<Layout context="PHOTOS">
+<style>
+  h1 {
+    color: red;
+  }
+</style>
+
+<Layout context="PHOTO">
   <article class="main-block">
-    <div class="image-detail">
-      <h1>{photo}</h1>
-      <Image src={image.default} alt={photo} format="webp" />
-    </div>
+    <Image src={image.default} alt={photo} format="webp" />
   </article>
 </Layout>

@@ -6,6 +6,7 @@ interface Props {
 const { context } = Astro.props;
 
 const setClass = (c: Page) => {
+  console.log(context);
   const base = "header__item";
   if (c === context) {
     return `${base} ${base}--active`;

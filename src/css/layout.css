@@ -28,6 +28,24 @@ article {
   flex-flow: wrap;
 }
 
+.card-content {
+  grid-template-columns: 1fr minmax(0, 120ch) 1.618fr;
+}
+
+.card-content article {
+  grid-column-start: 2;
+  grid-row-start: 2;
+
+  display: grid;
+  place-items: center;
+}
+
+.card-content article img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 header {
   display: flex;
   gap: var(--space-xx-s) var(--space-s);

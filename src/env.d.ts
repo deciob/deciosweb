@@ -1,1 +1,1 @@
-declare type Page = "INDEX" | "PHOTOS";
+declare type Page = "INDEX" | "PHOTOS" | "PHOTO";
